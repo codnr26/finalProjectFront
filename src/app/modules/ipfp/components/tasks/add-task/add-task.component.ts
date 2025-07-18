@@ -48,15 +48,14 @@ export class AddTaskComponent implements OnInit{
   }
 
   save(): void {
-    if (this.taskForm.invalid)
-      return;
+
 
     this.taskService.addTask(this.taskForm.value).subscribe({
       next: () => {
         this.snackBar.open('Utilisateur ajouté avec succès.', 'Fermer', {
           duration: 3000
         });
-        this.router.navigate(['/list-Tasks']); // rediriger vers la liste après ajout
+        this.router.navigate(['/list-tasks']); // rediriger vers la liste après ajout
       },
       error: (err) => {
         console.error('Erreur lors de l’ajout', err);
